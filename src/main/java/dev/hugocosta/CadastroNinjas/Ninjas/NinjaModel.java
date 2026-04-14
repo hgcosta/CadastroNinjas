@@ -1,7 +1,8 @@
-package dev.hugocosta.CadastroNinjas;
+package dev.hugocosta.CadastroNinjas.Ninjas;
 
 // É preciso transofrmar a classe model em entidades
 
+import dev.hugocosta.CadastroNinjas.Missoes.MissoesModel;
 import jakarta.persistence.*;
 
 //JPA = Java Persistence API
@@ -15,16 +16,18 @@ public class NinjaModel {
     private long id;
     private String nome;
     private String email;
-    private String aldeia;
-    int idade;
+    private int idade;
+    // Na classe ninja terá apenas uma missão
+    @ManyToOne
+    @JoinColumn(name="missoes_id") // Foreing Key ou Chave estrangeira
+    private MissoesModel missoes;
 
     public NinjaModel() {
     }
 
-    public NinjaModel(String nome, String email, String aldeia, int idade) {
+    public NinjaModel( String nome, String email, int idade) {
         this.nome = nome;
         this.email = email;
-        this.aldeia = aldeia;
         this.idade = idade;
     }
 
@@ -42,14 +45,6 @@ public class NinjaModel {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getAldeia() {
-        return aldeia;
-    }
-
-    public void setAldeia(String aldeia) {
-        this.aldeia = aldeia;
     }
 
     public int getIdade() {
