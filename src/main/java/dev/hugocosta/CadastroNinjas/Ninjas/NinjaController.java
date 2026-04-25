@@ -2,14 +2,18 @@ package dev.hugocosta.CadastroNinjas.Ninjas;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController // Anotação para informar que é um controller
 @RequestMapping("/ninjas") // Anotação para rotas
 public class NinjaController {
 
-    @GetMapping("/boasvindas")
-    public String boasVindas(){
-        return "Essa é a minha primeira mensagem nessa rota";
+    private NinjaService ninjaService;
+
+    public NinjaController(NinjaService ninjaService) {
+        this.ninjaService = ninjaService;
     }
+
 
     // Adicionar ninja (CREATE)
     @PostMapping("/criar")
@@ -18,8 +22,8 @@ public class NinjaController {
     }
     // Listar os ninjas (READ)
     @GetMapping("/listar")
-    public String monstrarTodosOsNinjas(){
-        return "Mostrar todos os ninjas";
+    public List<NinjaModel> listarNinjas() {
+        return ninjaService.listarNinjas();
     }
     // Procurar Ninja (READ)
     @GetMapping("/listarId")
