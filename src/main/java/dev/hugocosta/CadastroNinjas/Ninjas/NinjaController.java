@@ -3,7 +3,7 @@ package dev.hugocosta.CadastroNinjas.Ninjas;
 import org.springframework.web.bind.annotation.*;
 
 @RestController // Anotação para informar que é um controller
-@RequestMapping // Anotação para rotas
+@RequestMapping("ninjas") // Anotação para rotas
 public class NinjaController {
 
     @GetMapping("/boasvindas")
