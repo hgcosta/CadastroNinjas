@@ -19,7 +19,7 @@ public class NinjaModel {
 
     @Id // informa que o atribuito abaixo será o id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Estrategia de como será gerado o id
-    private long id;
+    private Long id;
     private String nome;
     @Column(unique = true)
     private String email;
