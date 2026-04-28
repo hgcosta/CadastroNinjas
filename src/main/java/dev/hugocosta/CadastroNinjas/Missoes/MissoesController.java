@@ -16,9 +16,9 @@ public class MissoesController {
     }
 
     // Criar missão
-    @PostMapping("/adicionar")
-    public String adicionarMissao(){
-        return "Missao Adicionada";
+    @PostMapping("/criar")
+    public MissoesModel criarMissao(@RequestBody MissoesModel missao){
+        return missoesService.criarMissao(missao);
     }
 
     // Listar Todas as missoes
@@ -37,8 +37,9 @@ public class MissoesController {
         return "Atualizar missao por id";
     }
 
-    @DeleteMapping("deletear")
-    public String deletarMissaoPorId(){
-        return "Deletar missao por id";
+    @DeleteMapping("deletar/{id}")
+    public void deletarMissaoPorId(@PathVariable long id){
+        missoesService.deletarMissaoPorId(id);
+
     }
 }

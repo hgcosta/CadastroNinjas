@@ -22,4 +22,12 @@ public class MissoesService {
         Optional<MissoesModel> missaoPorId = missoesRepository.findById(id);
         return missaoPorId.orElse(null);
     }
+
+    public MissoesModel criarMissao(MissoesModel missao){
+        return missoesRepository.save(missao);
+    }
+
+    public  void deletarMissaoPorId(long id){
+         missoesRepository.deleteById(id);
+    }
 }
