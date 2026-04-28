@@ -37,10 +37,20 @@ public class NinjaService {
 
     // Atualizar ninja
     public NinjaModel atualizarNinjaId(Long id, NinjaModel ninjaAtualizado){
-        if(ninjaRepository.existsById(id)){
+        Optional<NinjaModel> ninja = ninjaRepository.findById(id);
+
+        if(ninja.isPresent()){
+            NinjaModel ninjaExistente = ninja.get();
+
             ninjaAtualizado.setId(id);
+
+            if(ninjaAtualizado.getIdade() == null){
+                ninjaAtualizado.setIdade(ninjaExistente.getIdade());
+            }
+
             return ninjaRepository.save(ninjaAtualizado);
         }
+
         return null;
     }
 

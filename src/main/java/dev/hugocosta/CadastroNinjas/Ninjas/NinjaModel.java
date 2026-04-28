@@ -23,7 +23,7 @@ public class NinjaModel {
     private String nome;
     @Column(unique = true)
     private String email;
-    private int idade;
+    private Integer idade;
     // Na classe ninja terá apenas uma missão
     @ManyToOne
     @JoinColumn(name="missoes_id") // Foreing Key ou Chave estrangeira
