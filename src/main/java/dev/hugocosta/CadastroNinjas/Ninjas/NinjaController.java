@@ -1,5 +1,7 @@
 package dev.hugocosta.CadastroNinjas.Ninjas;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,8 @@ public class NinjaController {
 
     // Adicionar ninja (CREATE)
     @PostMapping("/criar")
+    @Operation(summary = "Criar um novo Ninja", description = "Rota permite criar ninjas e insere no banco de dados")
+
     public ResponseEntity<String> criarNinja(@RequestBody NinjaDTO ninja){
 
         NinjaDTO novoNinja =  ninjaService.criarMinja(ninja);
