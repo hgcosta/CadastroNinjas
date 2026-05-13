@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 //JPA = Java Persistence API
 //@Entity transforma toda a classe em uma entidade do banco de dados falando a table com a coluna de cada argumento
@@ -15,6 +16,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = "missoes")
 public class NinjaModel {
 
     @Id // informa que o atribuito abaixo será o id
